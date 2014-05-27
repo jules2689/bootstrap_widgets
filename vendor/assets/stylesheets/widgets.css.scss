@@ -1,0 +1,42 @@
+.dashboard-panel {
+  width: 29.3%;
+  height: 300px;
+  float: left;
+  margin: 2%;
+
+  .panel-heading {
+    height: 15%;
+    text-align: left;
+    .panel-title {
+      font-size: 20px;
+    }
+  }
+
+  .panel-content {
+    height: 85%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    .list-group-item {
+      border: 0px;
+      border-radius: 0px;
+      height: 50px;
+
+      &:hover {
+        background: #ccc;
+        color: white;
+      }
+      .key {
+        width: 35%;
+        float: left;
+        text-align: right;
+      }
+      .value {
+        width: 65%;
+        float: left;
+        text-align: center;
+      }
+    }
+  }
+}
