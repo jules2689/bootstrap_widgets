@@ -1,6 +1,6 @@
 module Widgets
   class DashboardWidget
-    attr_accessor :title, :data, :type, :text
+    attr_accessor :title, :panel, :text, :data, :type
 
     COLOURS = {
       'primary' => 'primary',
@@ -10,11 +10,12 @@ module Widgets
       'red' => 'danger'
     }
 
-    def initialize(title, text='', data={}, type='primary')
+    def initialize(title, panel='text', text='', data={}, type='primary')
       self.title = title
       self.data = data
       self.text = text
-      self.type = COLOURS[type]
+      self.panel = panel
+      self.type = COLOURS[type] || type
     end
 
     def add_data_pair(name, value)
