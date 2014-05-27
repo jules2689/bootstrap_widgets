@@ -1,12 +1,12 @@
 # Bootstrap::Widget
 
-TODO: Write a gem description
+A simplistic way of rendering dashboard widgets with Bootstrap.
 
-## Installation
+## Setup
 
 Add this line to your application's Gemfile:
 
-    gem 'bootstrap-widget'
+    gem 'widgets'
 
 And then execute:
 
@@ -14,11 +14,56 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bootstrap-widget
+    $ gem install widgets
+    
+Require the CSS file in application.css
 
-## Usage
+   ```
+   //= require widgets
+   ```
 
-TODO: Write usage instructions here
+Include the Widgets Module in your Application Helper:
+
+  ```Ruby
+  module ApplicationHelper
+    include Widgets
+  end
+  ```
+
+Then in your erb views just call the Helper:
+
+  ```Ruby
+  <%= widget @some_dashboard_widget %>
+  ```
+  
+## Dashboard Widgets
+  
+A Dashboard Widget can be created by calling:
+
+  ```Ruby
+  DasboardWidget.new(title, text='', data={}, type='primary')
+  ```
+  
+  As you can see, only title is required. Text is optional, data is initializes to {}, and the type is initialized to primary.
+  
+The following helper methods are available to handle data:
+  
+  ```Ruby
+  widget.add_data_pair(key,value)
+  widget.remove_data_pair(key, value)
+  ```
+  
+### Panel Colours
+
+Each of Bootstrap's main colours have been mapped to a type that may make more sense. These are listed below, however, you may use the default Bootstrap names.
+   
+   ```Ruby
+   'primary' => 'primary',
+   'green' => 'success',
+   'light-blue' => 'info',
+   'yellow' => 'warning',
+   'red' => 'danger'
+   ```
 
 ## Contributing
 
