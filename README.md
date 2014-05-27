@@ -52,7 +52,7 @@ A Dashboard Widget can be created by calling:
 
   As you can see, only title is required. Type defaults to text, text is optional, data is initializes to {}, and the type is initialized to primary.
 
-  Currently the available types are: "text", "bar_graph", "line_graph".
+  Currently the available types are: "text", "bar_graph", "line_graph", "donut_graph", "area_graph".
 
 The following helper methods are available to handle data:
 
