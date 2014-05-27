@@ -36,10 +36,8 @@ private
     case panel_type
     when 'text'
       return text_panel(data)
-    when 'bar_graph'
-      return bar_graph(data, title)
-    when 'line_graph'
-      return line_graph(data, title)
+    else
+      return graph(data, title, panel_type)
     end
   end
 
@@ -55,21 +53,21 @@ private
     return output
   end
 
-  def bar_graph(data={},title)
-    output = "<canvas id='bar-graph-#{title.parameterize}' width='300' height='253'></canvas>"
-    output << "<script>bar_graph(#{data.keys},#{data.values},'#{title.parameterize}')</script>"
-    return output
-  end
-
-  def line_graph(data={},title)
-    output = "<canvas id='line-graph-#{title.parameterize}' width='300' height='253'></canvas>"
-    output << "<script>line_graph(#{data.keys},#{data.values},'#{title.parameterize}')</script>"
+  def graph(data={},title,graph)
+    output = "<div id='#{graph}-#{title.parameterize}' class='graph'></div>"
+    output << "<script>#{graph}(#{json_data(data)},#{data.keys},'#{title.parameterize}')</script>"
     return output
   end
 
   def cap
     output = "</div></div>"
     return output
+  end
+
+  def json_data(data={})
+    jsdata = []
+    data.each {|key, value| jsdata << { label: "#{key}", value: value } }
+    return jsdata.to_json.html_safe
   end
 
 end

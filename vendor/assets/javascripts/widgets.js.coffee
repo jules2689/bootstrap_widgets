@@ -1,35 +1,56 @@
-#= require chart.min
+#= require raphael.min
+#= require morris.min
 
-window.bar_graph = (labels, data, title) ->
-  data = {
-    labels : labels,
-    datasets : [
-      {
-        fillColor : "rgba(220,220,220,0.5)",
-        strokeColor : "rgba(220,220,220,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        data : data
-      }
-    ]
-  }
-  width = $('#bar-graph-' + title).parent().width()
-  $('#bar-graph-' + title).attr('width', width)
-  new Chart($('#bar-graph-' + title).get(0).getContext("2d")).Bar(data)
+window.graphs = []
 
-window.line_graph = (labels, data, title) ->
-  data = {
-    labels : labels,
-    datasets : [
-      {
-        fillColor : "rgba(220,220,220,0.5)",
-        strokeColor : "rgba(220,220,220,1)",
-        pointColor : "rgba(220,220,220,1)",
-        pointStrokeColor : "#fff",
-        data : data
-      }
-    ]
+window.bar_graph = (json_data, labels, title) ->
+  graph = new Morris.Bar {
+    element: 'bar_graph-' + title,
+    data:  json_data,
+    xkey: 'label',
+    ykeys: ['value'],
+    labels: labels,
+    xLabelMargin: 10,
+    resize: true
   }
-  width = $('#line-graph-' + title).parent().width()
-  $('#line-graph-' + title).attr('width', width)
-  new Chart($('#line-graph-' + title).get(0).getContext("2d")).Line(data)
+  window.graphs.push graph
+
+window.line_graph = (json_data, labels, title) ->
+  graph = new Morris.Line {
+    element: 'line_graph-' + title,
+    parseTime: false,
+    data:  json_data,
+    xkey: 'label',
+    ykeys: ['value'],
+    labels: labels,
+    resize: true
+  }
+  window.graphs.push graph
+
+window.area_graph = (json_data, labels, title) ->
+  graph = new Morris.Area {
+    element: 'area_graph-' + title,
+    parseTime: false,
+    data:  json_data,
+    xkey: 'label',
+    ykeys: ['value'],
+    labels: labels,
+    resize: true
+  }
+  window.graphs.push graph
+
+window.donut_graph = (json_data, labels, title) ->
+  graph = new Morris.Donut {
+    element: 'donut_graph-' + title,
+    parseTime: false,
+    data:  json_data,
+    resize: true
+  }
+  window.graphs.push graph
+
+$( window ).resize ->
+  redraw(i) for i in [0..window.graphs.length-1]
+
+window.redraw = (idx) ->
+  graph = window.graphs[idx]
+  graph.redraw()
