@@ -1,5 +1,6 @@
 #= require raphael.min
 #= require morris.min
+#= require masonry
 
 window.graphs = []
 
@@ -58,3 +59,8 @@ $( window ).resize ->
 window.redraw = (idx) ->
   graph = window.graphs[idx]
   graph.redraw()
+
+$(document).on "ready page:change", ->
+  if $('#masonry-container').length
+    container = document.querySelector('#masonry-container');
+    msnry = new Masonry container

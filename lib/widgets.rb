@@ -7,6 +7,15 @@ module Widgets
     end
   end
 
+  def widget_group(widgets)
+    output = group_header
+    widgets.each do |widget|
+      output << widget(widget)
+    end
+    output << group_cap
+    return output.html_safe
+  end
+
   def widget(widget)
     output = header(widget.color, widget.title, widget.size)
     output << widget_text(widget.text)
@@ -16,6 +25,14 @@ module Widgets
   end
 
 private
+
+  def group_header
+    return "<div class='js-masonry' id='masonry-container' data-masonry-options=\"{ 'itemSelector': '.dashboard-panel', 'columnWidth': '.gridsizer' }\"><div class='gridsizer'></div>"
+  end
+
+  def group_cap
+    return "</div>"
+  end
 
   def header(type, title, size)
     output = "<div class='panel panel-#{type} dashboard-panel #{size}'>"

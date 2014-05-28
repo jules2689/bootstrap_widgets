@@ -34,4 +34,11 @@ describe Widgets do
     @dummy_class.widget(@graph_widget).should eq "<div class='panel panel-danger dashboard-panel large'><div class='panel-heading'><h2 class='panel-title'>Ash's Journey</h2></div><div class='panel-content'><div class='panel-body'>I choose you, Pikachu</div><div id='bar_graph-ash-s-journey' class='graph'></div><script>bar_graph([{\"label\":\"test\",\"value\":5}],[:test],'ash-s-journey',{\"pointSize\":5})</script></div></div>"
   end
 
+  it 'should generate a widget_group' do
+    @graph_widget.add_data_pair(:test, 5)
+    @widget.add_data_pair(:test, 5)
+    @widget.add_data_pair(:test2, 6)
+    @dummy_class.widget_group([@graph_widget, @widget]).should eq "<div class='js-masonry' id='masonry-container' data-masonry-options=\"{ 'itemSelector': '.dashboard-panel', 'columnWidth': '.gridsizer' }\"><div class='gridsizer'></div><div class='panel panel-danger dashboard-panel large'><div class='panel-heading'><h2 class='panel-title'>Ash's Journey</h2></div><div class='panel-content'><div class='panel-body'>I choose you, Pikachu</div><div id='bar_graph-ash-s-journey' class='graph'></div><script>bar_graph([{\"label\":\"test\",\"value\":5}],[:test],'ash-s-journey',{\"pointSize\":5})</script></div></div><div class='panel panel-primary dashboard-panel medium'><div class='panel-heading'><h2 class='panel-title'>Ash's Journey</h2></div><div class='panel-content'><ul class='list-group'><li class='list-group-item clearfix'><h4 class='key'>test</h4><h4 class='value'>5</h4></li><li class='list-group-item clearfix'><h4 class='key'>test2</h4><h4 class='value'>6</h4></li></ul></div></div></div>"
+  end
+
 end
