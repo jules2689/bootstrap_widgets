@@ -2,11 +2,14 @@
   min-width: 300px;
   width: 29.3%;
   float: left;
-  margin: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top:15px;
+  margin-bottom:15px;
 
-  &.x-large { height: 750px; }
-  &.large { height: 500px; }
-  &.medium { height: 350px; }
+  &.x-large { height: 890px; }
+  &.large { height: 660px; }
+  &.medium { height: 430px; }
   &.small { height: 200px; }
 
   .panel-heading {
