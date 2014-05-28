@@ -7,22 +7,20 @@
   margin-top:15px;
   margin-bottom:15px;
 
-  &.x-large { height: 890px; }
-  &.large { height: 660px; }
-  &.medium { height: 430px; }
-  &.small { height: 200px; }
+  &.x-large { height: 890px; .panel-content { height: 95%; }}
+  &.large { height: 660px; .panel-content { height: 93%; }}
+  &.medium { height: 430px; .panel-content { height: 90%; }}
+  &.small { height: 200px; .panel-content { height: 80%; }}
 
   .panel-heading {
-    height: 15%;
+    height: 40px;
     text-align: left;
-    max-height: 50px;
     .panel-title {
       font-size: 20px;
     }
   }
 
   .panel-content {
-    height: 85%;
     width: 100%;
     overflow: scroll;
 
