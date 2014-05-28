@@ -1,6 +1,6 @@
 module Widgets
   class DashboardWidget
-    attr_accessor :title, :panel, :text, :data, :type
+    attr_accessor :title, :panel, :type, :opts, :data, :text, :size
 
     COLOURS = {
       'primary' => 'primary',
@@ -10,12 +10,22 @@ module Widgets
       'red' => 'danger'
     }
 
-    def initialize(title, panel='text', text='', data={}, type='primary')
+    def initialize(title, panel='text', opts = {}, data={} )
       self.title = title
       self.data = data
-      self.text = text
       self.panel = panel
-      self.type = COLOURS[type] || type
+
+      # Set the custom opts
+      self.text = opts[:text] || ''
+      panel_colour = opts[:type] || 'primary'
+      self.type = COLOURS[panel_colour] || panel_colour
+      self.size = opts[:size] || 'medium'
+
+      # Remove the custom opts that are not Morris options
+      opts.delete(:size)
+      opts.delete(:text)
+      opts.delete(:type)
+      self.opts = opts
     end
 
     def add_data_pair(name, value)

@@ -8,17 +8,17 @@ module Widgets
   end
 
   def widget(widget)
-    output = header(widget.type, widget.title)
+    output = header(widget.type, widget.title, widget.size)
     output << widget_text(widget.text)
-    output << panel_content(widget.data, widget.panel, widget.title)
+    output << panel_content(widget.data, widget.panel, widget.title, widget.opts)
     output << cap
     return output.html_safe
   end
 
 private
 
-  def header(type, title)
-    output = "<div class='panel panel-#{type} dashboard-panel'>"
+  def header(type, title, size)
+    output = "<div class='panel panel-#{type} dashboard-panel #{size}'>"
     output << "<div class='panel-heading'><h2 class='panel-title'>#{title}</h2></div>"
     output << "<div class='panel-content'>"
     return output
@@ -32,12 +32,11 @@ private
     return output
   end
 
-  def panel_content(data={}, panel_type, title)
-    case panel_type
-    when 'text'
+  def panel_content(data={}, panel_type, title, opts)
+    if panel_type == 'text'
       return text_panel(data)
     else
-      return graph(data, title, panel_type)
+      return graph(data, title, panel_type, opts)
     end
   end
 
@@ -53,9 +52,9 @@ private
     return output
   end
 
-  def graph(data={},title,graph)
+  def graph(data={}, title, graph, opts)
     output = "<div id='#{graph}-#{title.parameterize}' class='graph'></div>"
-    output << "<script>#{graph}(#{json_data(data)},#{data.keys},'#{title.parameterize}')</script>"
+    output << "<script>#{graph}(#{json_data(data)},#{data.keys},'#{title.parameterize}',#{opts.to_json})</script>"
     return output
   end
 
