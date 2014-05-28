@@ -8,7 +8,7 @@ module Widgets
   end
 
   def widget(widget)
-    output = header(widget.type, widget.title, widget.size)
+    output = header(widget.color, widget.title, widget.size)
     output << widget_text(widget.text)
     output << panel_content(widget.data, widget.panel, widget.title, widget.opts)
     output << cap
