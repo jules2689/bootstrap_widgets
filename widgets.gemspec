@@ -21,4 +21,12 @@ Gem::Specification.new do |s|
   s.add_dependency "sass-rails", "~> 4.0.0"
   s.add_dependency "coffee-rails", "~> 4.0.0"
   s.add_dependency "bootstrap-sass", "~> 3.1.1"
+
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "guard"
+  s.add_development_dependency "guard-rspec"
+  s.add_development_dependency "pry"
+  s.add_development_dependency "pry-remote"
+  s.add_development_dependency "pry-nav"
 end

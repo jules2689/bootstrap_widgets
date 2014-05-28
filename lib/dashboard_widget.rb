@@ -32,7 +32,7 @@ module Widgets
       self.data[name] = value
     end
 
-    def remove_data_pair(name, value)
+    def remove_data_pair(name)
       self.data.delete(name)
     end
 
