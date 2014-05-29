@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Widgets::DashboardWidget do
+describe BootstrapWidgets::DashboardWidget do
   before do
-    @widget = Widgets::DashboardWidget.new('Ash\'s Journey')
-    @graph_widget = Widgets::DashboardWidget.new('Ash\'s Journey','bar_graph', { row_size:'large', color: 'red', text: 'I choose you, Pikachu', pointSize: 5})
+    @widget = BootstrapWidgets::DashboardWidget.new('Ash\'s Journey')
+    @graph_widget = BootstrapWidgets::DashboardWidget.new('Ash\'s Journey','bar_graph', { row_size:'large', color: 'red', text: 'I choose you, Pikachu', pointSize: 5})
   end
 
   it 'should have a title' do

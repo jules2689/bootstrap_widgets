@@ -1,4 +1,4 @@
-module Widgets
+module BootstrapWidgets
   class DashboardWidget
     attr_accessor :title, :panel, :color, :opts, :data, :text, :row_size, :col_size
 

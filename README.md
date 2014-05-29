@@ -1,12 +1,14 @@
-# Widgets
+# Bootstrap Widgets
 
 A simplistic way of rendering dashboard widgets with Bootstrap.
+
+![Sample Widgets](http://i.imgur.com/UKnPRxW.png)
 
 ## Setup
 
 Add this line to your application's Gemfile:
 
-    gem 'widgets'
+    gem 'bootstrap_widgets'
 
 And then execute:
 
@@ -14,25 +16,25 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install widgets
+    $ gem install bootstrap_widgets
 
 Require the CSS file in application.css
 
    ```
-   //= require widgets
+   //= require bootstrap_widgets
    ```
 
 Require the JS file in application.js
 
   ```
-  //= require widgets
+  //= require bootstrap_widgets
   ```
 
-Include the Widgets Module in your Application Helper:
+Include the Widgets Module in your Application Helper (plus any other model or controller you want to use it in):
 
   ```Ruby
   module ApplicationHelper
-    include Widgets
+    include BootstrapWidgets
   end
   ```
 
@@ -92,9 +94,13 @@ By using a widget_group and passing an array of widgets, a dashboard is automati
 
 ```<%= widget_group [widget, widget, widget], num_of_columns=3 %>```
 
+### Over 3 Widgets
+
+On resize, the library redraws the graphs. Due to this, we put up a loading spinner briefly and redraw the graphs in behind this spinner. This allows for a smoother experience.
+
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/bootstrap-widget/fork )
+1. Fork it ( http://github.com/<my-github-username>/bootstrap_widgets/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

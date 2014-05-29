@@ -3,7 +3,7 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'widgets'
+require 'bootstrap_widgets'
 
 RSpec.configure do |config|
 

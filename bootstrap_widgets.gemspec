@@ -1,16 +1,16 @@
 # coding: utf-8
 $:.push File.expand_path("../lib", __FILE__)
 
-require "widgets/version"
+require "bootstrap_widgets/version"
 
 Gem::Specification.new do |s|
-  s.name          = "widgets"
-  s.version       = Widgets::VERSION
+  s.name          = "bootstrap_widgets"
+  s.version       = BootstrapWidgets::VERSION
   s.authors       = ["Julian Nadeau"]
   s.email         = ["julian@jnadeau.ca"]
-  s.summary       = "A simplistic way of rendering dashboard widgets with Bootstrap"
-  s.description   = "Add text and graph widgets for a dashboard, rendered with Bootstrap"
-  s.homepage      = "http://github.com/jules2689/widgets"
+  s.summary       = "A simplistic way of rendering dashboard bootstrap-widgets with Bootstrap"
+  s.description   = "Add text and graph bootstrap-widgets for a dashboard, rendered with Bootstrap"
+  s.homepage      = "http://github.com/jules2689/bootstrap_widgets"
   s.license       = "MIT"
 
   s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

@@ -1,7 +1,7 @@
-require "widgets/version"
+require "bootstrap_widgets/version"
 require "dashboard_widget"
 
-module Widgets
+module BootstrapWidgets
   module Rails
     class Engine < ::Rails::Engine
     end

@@ -73,7 +73,7 @@ $(window).resize ->
   if window.graphs.length > 3
     waitForFinalEvent (->
       resize()
-    ), 250, "widgets.resize.redrawing"
+    ), 250, "bootstrap-widgets.resize.redrawing"
   else
     resize()
 
