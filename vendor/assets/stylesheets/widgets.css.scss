@@ -1,11 +1,6 @@
 .dashboard-panel {
-  min-width: 300px;
-  width: 29.3%;
-  float: left;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-top:15px;
-  margin-bottom:15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 
   &.x-large { height: 890px; .panel-content { height: 95%; }}
   &.large { height: 660px; .panel-content { height: 93%; }}

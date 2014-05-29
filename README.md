@@ -53,19 +53,20 @@ A Dashboard Widget can be created by calling:
   As you can see, only title is required. Panel Type defaults to text, and opts/data are initialized to {}.
 
   Currently the available panel types are: "text", "bar_graph", "line_graph", "donut_graph", "area_graph".
-  
+
   The following helper methods are available to handle data:
 
   ```Ruby
   widget.add_data_pair(key,value)
   widget.remove_data_pair(key, value)
   ```
-  
+
 ### Opts Hash
 
   The opts array can take the following custom options:
-    
-- **size** ~> The size of the widget (small, medium, large, x-large). The default is medium.
+
+- **row_size** ~> The vertical size of the widget (small, medium, large, x-large). The default is medium.
+- **col_size** ~> The horizontal size (number of columns) of the widget (1-5). The default is 1.
 - **text** ~> The text to be displayed at the top of the widget. The default is nothing. If you set text, the recommended size is large or x-large.
 - **color** ~> The color of the array. See below for more details.
 
@@ -84,6 +85,12 @@ Each of Bootstrap's main colours have been mapped to a type that may make more s
    'yellow' => 'warning',
    'red' => 'danger'
    ```
+
+## Widget Groups (Full Dashboard)
+
+By using a widget_group and passing an array of widgets, a dashboard is automatically created with Masonry (auto resizing and position dashboard). Number of Columns can be anything, but obvious limits of a screen exist. Columns defaults to 3.
+
+```<%= widget_group [widget, widget, widget], num_of_columns=3 %>```
 
 ## Contributing
 

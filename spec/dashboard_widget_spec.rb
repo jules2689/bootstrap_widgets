@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Widgets::DashboardWidget do
   before do
     @widget = Widgets::DashboardWidget.new('Ash\'s Journey')
-    @graph_widget = Widgets::DashboardWidget.new('Ash\'s Journey','bar_graph', { size:'large', color: 'red', text: 'I choose you, Pikachu', pointSize: 5})
+    @graph_widget = Widgets::DashboardWidget.new('Ash\'s Journey','bar_graph', { row_size:'large', color: 'red', text: 'I choose you, Pikachu', pointSize: 5})
   end
 
   it 'should have a title' do
@@ -22,8 +22,8 @@ describe Widgets::DashboardWidget do
   end
 
   it 'should have a size' do
-    @widget.size.should eq 'medium'
-    @graph_widget.size.should eq 'large'
+    @widget.row_size.should eq 'medium'
+    @graph_widget.row_size.should eq 'large'
   end
 
   it 'should have text' do

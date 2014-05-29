@@ -1,6 +1,6 @@
 module Widgets
   class DashboardWidget
-    attr_accessor :title, :panel, :color, :opts, :data, :text, :size
+    attr_accessor :title, :panel, :color, :opts, :data, :text, :row_size, :col_size
 
     COLOURS = {
       'primary' => 'primary',
@@ -19,10 +19,12 @@ module Widgets
       self.text = opts[:text] || ''
       panel_colour = opts[:color] || 'primary'
       self.color = COLOURS[panel_colour] || panel_colour
-      self.size = opts[:size] || 'medium'
+      self.row_size = opts[:row_size] || 'medium'
+      self.col_size = opts[:col_size] || '1'
 
       # Remove the custom opts that are not Morris options
-      opts.delete(:size)
+      opts.delete(:row_size)
+      opts.delete(:col_size)
       opts.delete(:text)
       opts.delete(:color)
       self.opts = opts

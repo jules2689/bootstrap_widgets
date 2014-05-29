@@ -61,6 +61,6 @@ window.redraw = (idx) ->
   graph.redraw()
 
 $(document).on "ready page:change", ->
-  if $('#masonry-container').length
-    container = document.querySelector('#masonry-container');
+  if $('.masonry').length
+    container = document.querySelector('.masonry');
     msnry = new Masonry container

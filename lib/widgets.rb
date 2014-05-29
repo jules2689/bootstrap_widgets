@@ -7,8 +7,8 @@ module Widgets
     end
   end
 
-  def widget_group(widgets)
-    output = group_header
+  def widget_group(widgets, cols=3)
+    output = group_header(90/cols)
     widgets.each do |widget|
       output << widget(widget)
     end
@@ -17,7 +17,7 @@ module Widgets
   end
 
   def widget(widget)
-    output = header(widget.color, widget.title, widget.size)
+    output = header(widget.color, widget.title, widget.row_size, widget.col_size)
     output << widget_text(widget.text)
     output << panel_content(widget.data, widget.panel, widget.title, widget.opts)
     output << cap
@@ -26,16 +26,18 @@ module Widgets
 
 private
 
-  def group_header
-    return "<div class='js-masonry' id='masonry-container' data-masonry-options=\"{ 'itemSelector': '.dashboard-panel', 'columnWidth': '.gridsizer' }\"><div class='gridsizer'></div>"
+  def group_header(width)
+    output = "<style>.masonry .dashboard-panel, .masonry .grid-sizer { width: #{width}%; margin-left: 1%;margin-right: 1%; } .dashboard-panel.col-2 { width: #{(width*2 + 2).to_s}% !important; } .dashboard-panel.col-3 { width: #{(width*3 + 2*2).to_s}% !important; } .dashboard-panel.col-4 { width: #{(width*4 + 3*2).to_s}% !important; } .dashboard-panel.col-5 { width: #{(width*5 + 4*2).to_s}% !important; }</style>"
+    output << "<div class=\"masonry js-masonry\" data-col=\"#{width.to_s}%\" data-masonry-options='{ \"columnWidth\":\".grid-sizer\", \"itemSelector\":\".item\" }'><div class=\"grid-sizer\"></div>"
+    return output
   end
 
   def group_cap
     return "</div>"
   end
 
-  def header(type, title, size)
-    output = "<div class='panel panel-#{type} dashboard-panel #{size}'>"
+  def header(type, title, row_size, col_size)
+    output = "<div class='panel panel-#{type} item dashboard-panel #{row_size} col-#{col_size}'>"
     output << "<div class='panel-heading'><h2 class='panel-title'>#{title}</h2></div>"
     output << "<div class='panel-content'>"
     return output
