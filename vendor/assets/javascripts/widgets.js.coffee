@@ -2,6 +2,8 @@
 #= require morris.min
 #= require masonry
 
+# ===== GRAPHS ====
+
 window.graphs = []
 
 window.bar_graph = (json_data, labels, title, opts) ->
@@ -53,14 +55,39 @@ window.donut_graph = (json_data, labels, title, opts) ->
   graph = new Morris.Donut options
   window.graphs.push graph
 
-$( window ).resize ->
+# ===== REDRAWING/RESIZING ====
+
+window.resize = () ->
+  $('.loading-view').show()
   redraw(i) for i in [0..window.graphs.length-1]
+  $('.loading-view').hide()
 
 window.redraw = (idx) ->
   graph = window.graphs[idx]
   graph.redraw()
 
+# ===== JQUERY EVENTS ====
+
+$(window).resize ->
+  $('.loading-view').show()
+  if window.graphs.length > 3
+    waitForFinalEvent (->
+      resize()
+    ), 250, "widgets.resize.redrawing"
+  else
+    resize()
+
 $(document).on "ready page:change", ->
   if $('.masonry').length
     container = document.querySelector('.masonry');
     msnry = new Masonry container
+
+# ===== GLOBAL HELPERS ====
+
+waitForFinalEvent = (->
+  timers = {}
+  (callback, ms, uniqueId) ->
+    uniqueId = "Don't call this twice without a uniqueId" unless uniqueId
+    clearTimeout timers[uniqueId] if timers[uniqueId]
+    timers[uniqueId] = setTimeout(callback, ms)
+)()

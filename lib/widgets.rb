@@ -1,5 +1,5 @@
 require "widgets/version"
-require "dashboard_widget.rb"
+require "dashboard_widget"
 
 module Widgets
   module Rails
@@ -27,7 +27,8 @@ module Widgets
 private
 
   def group_header(width)
-    output = "<style>.masonry .dashboard-panel, .masonry .grid-sizer { width: #{width}%; margin-left: 1%;margin-right: 1%; } .dashboard-panel.col-2 { width: #{(width*2 + 2).to_s}% !important; } .dashboard-panel.col-3 { width: #{(width*3 + 2*2).to_s}% !important; } .dashboard-panel.col-4 { width: #{(width*4 + 3*2).to_s}% !important; } .dashboard-panel.col-5 { width: #{(width*5 + 4*2).to_s}% !important; }</style>"
+    output = "<style>.masonry .widget-panel, .masonry .grid-sizer { width: #{width}%; margin-left: 1%;margin-right: 1%; } .widget-panel.col-2 { width: #{(width*2 + 2).to_s}% !important; } .widget-panel.col-3 { width: #{(width*3 + 2*2).to_s}% !important; } .widget-panel.col-4 { width: #{(width*4 + 3*2).to_s}% !important; } .widget-panel.col-5 { width: #{(width*5 + 4*2).to_s}% !important; }</style>"
+    output << "<div class='loading-view'><span id=\"widget-spinner\"></span></div>"
     output << "<div class=\"masonry js-masonry\" data-col=\"#{width.to_s}%\" data-masonry-options='{ \"columnWidth\":\".grid-sizer\", \"itemSelector\":\".item\" }'><div class=\"grid-sizer\"></div>"
     return output
   end
@@ -37,7 +38,7 @@ private
   end
 
   def header(type, title, row_size, col_size)
-    output = "<div class='panel panel-#{type} item dashboard-panel #{row_size} col-#{col_size}'>"
+    output = "<div class='panel panel-#{type} item widget-panel #{row_size} col-#{col_size}'>"
     output << "<div class='panel-heading'><h2 class='panel-title'>#{title}</h2></div>"
     output << "<div class='panel-content'>"
     return output
