@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.0.4"
-  s.add_dependency "jquery-rails", "~> 3.1.0"
-  s.add_dependency "sass-rails", "~> 4.0.0"
-  s.add_dependency "coffee-rails", "~> 4.0.0"
-  s.add_dependency "bootstrap-sass", "~> 3.1.1"
+  s.add_dependency "rails", "~> 4.0.4", ">= 4.0.4"
+  s.add_dependency "jquery-rails", "~> 3.1.0", ">= 3.1.0"
+  s.add_dependency "sass-rails", "~> 4.0.0", ">= 4.0.0"
+  s.add_dependency "coffee-rails", "~> 4.0.0",  ">= 4.0.0"
+  s.add_dependency "bootstrap-sass", "~> 3.1.1", ">= 3.1.1"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"

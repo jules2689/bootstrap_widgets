@@ -2,9 +2,7 @@ require "bootstrap_widgets/version"
 require "dashboard_widget"
 
 module BootstrapWidgets
-  module Rails
-    class Engine < ::Rails::Engine
-    end
+  class Engine < ::Rails::Engine
   end
 
   def widget_group(widgets, cols=3)
