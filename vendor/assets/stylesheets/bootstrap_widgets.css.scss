@@ -21,10 +21,11 @@
 }
 @-webkit-keyframes sweep { to { -webkit-transform: rotate(360deg); } }
 
-/**** DASHBOARD AND bootstrap-widgets ****/
+/**** DASHBOARD AND WIDGETS ****/
 .widget-panel {
   margin-top: 15px;
   margin-bottom: 15px;
+  min-width: 210px;
 
   &.x-large { height: 890px; .panel-content { height: 95%; }}
   &.large { height: 660px; .panel-content { height: 93%; }}
@@ -53,22 +54,117 @@
     .list-group-item {
       border: 0px;
       border-radius: 0px;
-      height: 50px;
+      height: 64px;
 
       &:hover {
         background: #ccc;
         color: white;
       }
-      .key {
-        width: 35%;
+      .left-text {
+        width: 40%;
         float: left;
         text-align: right;
       }
-      .value {
-        width: 65%;
+      .right-text {
+        width: 60%;
         float: left;
         text-align: center;
       }
     }
+  }
+}
+
+/**** SINGLE TEXT WIDGET ****/
+
+.widget-panel.single_text {
+  overflow: hidden;
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 150px !important;
+
+  &.panel-primary{
+    background: #428bca;
+    .view-more {
+      background: #4884b8;
+    }
+  }
+  &.panel-success{
+    background: #3c763d;
+    .view-more {
+      background: #559756;
+    }
+  }
+  &.panel-info{
+    background: #31708f;
+    .view-more {
+      background: #5493B3;
+    }
+  }
+  &.panel-warning{
+    background: #FCBF43;
+    .view-more {
+      background: #E0C48B;
+    }
+  }
+  &.panel-danger{
+    background: #B84848;
+    .view-more {
+      background: #974552;
+    }
+  }
+
+  .info {
+      padding-left: 10px;
+      padding-right: 10px;
+
+      .visual {
+        width: 80px;
+        height: 80px;
+        display: block;
+        float: left;
+        padding-top: 10px;
+        padding-left: 15px;
+        margin-bottom: 15px;
+        font-size: 35px;
+        line-height: 35px;
+      }
+      .visual > i {
+        margin-left: -40px;
+        font-size: 110px;
+        line-height: 120px;
+        filter: alpha(opacity=30);
+        color: white;
+        opacity: 0.3;
+      }
+      .number {
+        font-size: 45px;
+        font-weight: 300;
+        color: #fff;
+        line-height: 31px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      .desc {
+        font-size: 30px;
+        font-weight: 100;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .desc, .number {
+        text-align: right;
+      }
+  }
+
+  .view-more {
+    clear: both;
+    display: block;
+    padding: 6px 10px 6px 10px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 11px;
+    opacity: 0.7;
+    color: white;
+    margin-top: 20px;
+    width: 100%;
+    text-align: right;
   }
 }

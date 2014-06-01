@@ -69,13 +69,14 @@ window.redraw = (idx) ->
 # ===== JQUERY EVENTS ====
 
 $(window).resize ->
-  $('.loading-view').show()
-  if window.graphs.length > 3
-    waitForFinalEvent (->
+  if window.graphs.length > 0
+    $('.loading-view').show()
+    if window.graphs.length > 3
+      waitForFinalEvent (->
+        resize()
+      ), 250, "bootstrap-widgets.resize.redrawing"
+    else
       resize()
-    ), 250, "bootstrap-widgets.resize.redrawing"
-  else
-    resize()
 
 $(document).on "ready page:change", ->
   if $('.masonry').length

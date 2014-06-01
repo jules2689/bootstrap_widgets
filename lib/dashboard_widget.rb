@@ -1,6 +1,7 @@
 module BootstrapWidgets
   class DashboardWidget
-    attr_accessor :title, :panel, :color, :opts, :data, :text, :row_size, :col_size
+    attr_accessor :title, :panel, :color, :opts, :data, :text, :row_size, :col_size,
+                  :icon, :link, :labels, :direction
 
     COLOURS = {
       'primary' => 'primary',
@@ -21,12 +22,21 @@ module BootstrapWidgets
       self.color = COLOURS[panel_colour] || panel_colour
       self.row_size = opts[:row_size] || 'medium'
       self.col_size = opts[:col_size] || '1'
+      self.icon = opts[:icon] || 'glyphicon-plus'
+      self.link = opts[:link] || nil
+      self.labels = opts[:labels] || ['']
+      self.direction = opts[:direction] || 'LTR'
 
       # Remove the custom opts that are not Morris options
       opts.delete(:row_size)
       opts.delete(:col_size)
       opts.delete(:text)
       opts.delete(:color)
+      opts.delete(:icon)
+      opts.delete(:link)
+      opts.delete(:labels)
+      opts.delete(:direction)
+
       self.opts = opts
     end
 
