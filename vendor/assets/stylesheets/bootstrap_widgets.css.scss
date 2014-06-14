@@ -1,3 +1,5 @@
+$break-small:1024px;
+
 /**** LOADING ****/
 .loading-view {
   height: 100%;
@@ -55,6 +57,7 @@
       border: 0px;
       border-radius: 0px;
       height: 64px;
+      overflow-y: hidden;
 
       &:hover {
         background: #ccc;
@@ -64,11 +67,17 @@
         width: 40%;
         float: left;
         text-align: right;
+        @media screen and (max-width: $break-small) {
+        font-size: 13px;
+       }
       }
       .right-text {
         width: 60%;
         float: left;
         text-align: center;
+        @media screen and (max-width: $break-small) {
+        font-size: 13px;
+       }
       }
     }
   }
@@ -143,11 +152,18 @@
         line-height: 31px;
         margin-top: 20px;
         margin-bottom: 10px;
+       @media screen and (max-width: $break-small) {
+        line-height: 18px;
+        font-size: 20px;
+       }
       }
       .desc {
         font-size: 30px;
         font-weight: 100;
         color: rgba(255, 255, 255, 0.5);
+        @media screen and (max-width: $break-small) {
+        font-size: 24px;
+       }
       }
       .desc, .number {
         text-align: right;
