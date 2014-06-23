@@ -12,7 +12,9 @@ class GraphWidget < Widget
 
   def self.graph(data={}, title, graph, labels, opts)
     output = "<div id='#{graph}-#{title.parameterize}' class='graph'></div>"
-    output << "<script>#{graph}(#{json_data(data)},#{labels},'#{title.parameterize}',#{opts.to_json})</script>"
+    json_data = json_data(data)
+    link_data = link_data(data)
+    output << "<script>#{graph}(#{json_data},#{labels},'#{title.parameterize}',#{opts.to_json}, #{link_data})</script>"
     output
   end
 

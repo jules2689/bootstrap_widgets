@@ -6,7 +6,7 @@
 
 window.graphs = []
 
-window.bar_graph = (json_data, labels, title, opts) ->
+window.bar_graph = (json_data, labels, title, opts, links=[]) ->
   options = $.extend({},opts,{
     element: 'bar_graph-' + title,
     data:  json_data,
@@ -17,9 +17,13 @@ window.bar_graph = (json_data, labels, title, opts) ->
     resize: true
   })
   graph = new Morris.Bar options
+  graph.links = links
+  graph.on "click", (data) ->
+    if graph.links[data]
+      window.location =  graph.links[data]
   window.graphs.push graph
 
-window.line_graph = (json_data, labels, title, opts) ->
+window.line_graph = (json_data, labels, title, opts, links=[]) ->
   options = $.extend({},opts,{
     element: 'line_graph-' + title,
     parseTime: false,
@@ -30,9 +34,13 @@ window.line_graph = (json_data, labels, title, opts) ->
     resize: true
   })
   graph = new Morris.Line options
+  graph.links = links
+  graph.on "click", (data) ->
+    if graph.links[data]
+      window.location =  graph.links[data]
   window.graphs.push graph
 
-window.area_graph = (json_data, labels, title, opts) ->
+window.area_graph = (json_data, labels, title, opts, links=[]) ->
   options = $.extend({},opts,{
     element: 'area_graph-' + title,
     parseTime: false,
@@ -43,9 +51,12 @@ window.area_graph = (json_data, labels, title, opts) ->
     resize: true
   })
   graph = new Morris.Area options
+  graph.on "click", (data) ->
+    if graph.links[data]
+      window.location =  graph.links[data]
   window.graphs.push graph
 
-window.donut_graph = (json_data, labels, title, opts) ->
+window.donut_graph = (json_data, labels, title, opts, links=[]) ->
   options = $.extend({},opts,{
     element: 'donut_graph-' + title,
     parseTime: false,
@@ -53,6 +64,10 @@ window.donut_graph = (json_data, labels, title, opts) ->
     resize: true
   })
   graph = new Morris.Donut options
+  graph.links = links
+  graph.on "click", (data) ->
+    if graph.links[data]
+      window.location =  graph.links[data]
   window.graphs.push graph
 
 # ===== REDRAWING/RESIZING ====

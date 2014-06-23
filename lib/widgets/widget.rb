@@ -37,7 +37,23 @@ protected
 
   def self.json_data(data={})
     jsdata = []
-    data.each {|key, value| jsdata << { label: "#{key}", value: value } }
+    data.each do |key, value|
+      if value.is_a? Hash
+        jsdata << { label: "#{key}", value: value[:data] }
+      else
+        jsdata << { label: "#{key}", value: value }
+      end
+    end
+    jsdata.to_json.html_safe
+  end
+
+  def self.link_data(data={})
+    jsdata = []
+    data.each do |key, value|
+      if value.is_a? Hash
+        jsdata << value[:link]
+      end
+    end
     jsdata.to_json.html_safe
   end
 
