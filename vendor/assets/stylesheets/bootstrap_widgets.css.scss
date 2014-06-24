@@ -1,6 +1,6 @@
 //= require morris.min
 
-$break-small:1024px;
+$break-small-dpi: 2.0;
 
 /**** LOADING ****/
 .loading-view {
@@ -69,17 +69,23 @@ $break-small:1024px;
         width: 40%;
         float: left;
         text-align: right;
-        @media screen and (max-width: $break-small) {
-        font-size: 13px;
-       }
+        @media only screen and (min--moz-device-pixel-ratio: $break-small-dpi),
+        (-o-min-device-pixel-ratio: $break-small-dpi),
+        (-webkit-min-device-pixel-ratio: $break-small-dpi),
+        (min-device-pixel-ratio: $break-small-dpi) {
+          font-size: 13px;
+        }
       }
       .right-text {
         width: 60%;
         float: left;
         text-align: center;
-        @media screen and (max-width: $break-small) {
-        font-size: 13px;
-       }
+        @media only screen and (min--moz-device-pixel-ratio: $break-small-dpi),
+        (-o-min-device-pixel-ratio: $break-small-dpi),
+        (-webkit-min-device-pixel-ratio: $break-small-dpi),
+        (min-device-pixel-ratio: $break-small-dpi) {
+          font-size: 13px;
+        }
       }
     }
   }
@@ -154,21 +160,27 @@ $break-small:1024px;
         line-height: 31px;
         margin-top: 20px;
         margin-bottom: 10px;
-       @media screen and (max-width: $break-small) {
-        line-height: 18px;
-        font-size: 20px;
-        float:right;
-        margin-top:-50px;
-       }
+        @media only screen and (min--moz-device-pixel-ratio: $break-small-dpi),
+        (-o-min-device-pixel-ratio: $break-small-dpi),
+        (-webkit-min-device-pixel-ratio: $break-small-dpi),
+        (min-device-pixel-ratio: $break-small-dpi) {
+          line-height: 18px;
+          font-size: 20px;
+          float:right;
+          margin-top:-50px;
+        }
       }
       .desc {
         font-size: 30px;
         font-weight: 100;
         color: rgba(255, 255, 255, 0.5);
-        @media screen and (max-width: $break-small) {
-        font-size: 24px;
-        float: right;
-       }
+        @media only screen and (min--moz-device-pixel-ratio: $break-small-dpi),
+        (-o-min-device-pixel-ratio: $break-small-dpi),
+        (-webkit-min-device-pixel-ratio: $break-small-dpi),
+        (min-device-pixel-ratio: $break-small-dpi) {
+          font-size: 24px;
+          float: right;
+        }
       }
       .desc, .number {
         text-align: right;
