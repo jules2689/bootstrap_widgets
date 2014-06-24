@@ -11,10 +11,12 @@ class GraphWidget < Widget
   end
 
   def self.graph(data={}, title, graph, labels, opts)
-    output = "<div id='#{graph}-#{title.parameterize}' class='graph'></div>"
     json_data = json_data(data)
     link_data = link_data(data)
-    output << "<script>#{graph}(#{json_data},#{labels},'#{title.parameterize}',#{opts.to_json}, #{link_data})</script>"
+    extra_classes = link_data.size > 0 ? "clickable_graph" : ""
+
+    output = "<div id='#{graph}-#{title.parameterize}' class='graph #{extra_classes}'></div>"
+    output << "<script>#{graph}(#{json_data},#{labels},'#{title.parameterize}',#{opts.to_json}, #{link_data.to_json.html_safe})</script>"
     output
   end
 

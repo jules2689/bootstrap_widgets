@@ -54,7 +54,7 @@ protected
         jsdata << value[:link]
       end
     end
-    jsdata.to_json.html_safe
+    jsdata.compact
   end
 
 end

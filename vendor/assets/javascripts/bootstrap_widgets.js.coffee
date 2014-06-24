@@ -86,12 +86,9 @@ window.redraw = (idx) ->
 $(window).resize ->
   if window.graphs.length > 0
     $('.loading-view').show()
-    if window.graphs.length > 3
-      waitForFinalEvent (->
-        resize()
-      ), 250, "bootstrap-widgets.resize.redrawing"
-    else
+    waitForFinalEvent (->
       resize()
+    ), 250, "bootstrap-widgets.resize.redrawing"
 
 $(document).on "ready page:change", ->
   if $('.masonry').length

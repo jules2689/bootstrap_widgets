@@ -1,3 +1,5 @@
+//= require morris.min
+
 $break-small:1024px;
 
 /**** LOADING ****/
@@ -186,4 +188,16 @@ $break-small:1024px;
     width: 100%;
     text-align: right;
   }
+}
+
+/***** GRAPH SPECIFIC *******/
+
+.clickable_graph > svg > path,
+.clickable_graph > svg > rect,
+.clickable_graph > .morris-hover {
+  cursor: pointer;
+}
+
+.clickable_graph > .morris-hover:hover {
+  background: #fff;
 }
