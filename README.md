@@ -94,7 +94,7 @@ By using a widget_group and passing an array of widgets, a dashboard is automati
 
 ```<%= widget_group [widget, widget, widget], num_of_columns=3 %>```
 
-### Over 3 Widgets
+### Using Graphing Widgets
 
 On resize, the library redraws the graphs. Due to this, we put up a loading spinner briefly and redraw the graphs in behind this spinner. This allows for a smoother experience.
 
