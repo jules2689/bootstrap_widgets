@@ -26,7 +26,6 @@ window.bar_graph = (json_data, labels, title, opts, links=[]) ->
 window.line_graph = (json_data, labels, title, opts, links=[]) ->
   options = $.extend({},opts,{
     element: 'line_graph-' + title,
-    parseTime: false,
     data:  json_data,
     xkey: 'label',
     ykeys: ['value'],
